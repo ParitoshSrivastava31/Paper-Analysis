@@ -1,54 +1,11 @@
-// import { client } from "@/lib/sanity"; // Adjust path
-// import { BlogPost } from "@/types/post"; // Adjust path
-// import Link from "next/link";
-
-// export const revalidate = 10; // ISR every 10 seconds
-
-// export async function getBlogPosts(): Promise<BlogPost[]> {
-//   return await client.fetch(`
-//     *[_type == "post"] | order(publishedAt desc) {
-//       _id,
-//       title,
-//       "imageUrl": mainImage.asset->url,
-//       body,
-//       publishedAt
-//     }
-//   `);
-// }
-
-// export default async function BlogPage() {
-//   const posts: BlogPost[] = await getBlogPosts();
-
-//   return (
-//     <div className="max-w-3xl mt-24 p-5 z-10">
-//       <h1 className="mt-50 font-bold">Blog</h1>
-//       <ul>
-//         {posts.map((post) => (
-//           <li key={post._id}>
-//             <h2>{post.title}</h2>
-//             {post.imageUrl && (
-//               <img src={post.imageUrl} alt={post.title} width={300} />
-//             )}
-//             <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
-//             <Link href={`/post/${post._id}`}>
-//               <span className="text-blue-500 underline cursor-pointer z-10">
-//                 Read More
-//               </span>
-//             </Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
 import { client } from "@/lib/sanity"; // Adjust path
 import { BlogPost } from "@/types/post"; // Adjust path
 import Link from "next/link";
 
 export const revalidate = 10; // ISR every 10 seconds
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+// Remove 'export' to make this a local function
+async function getBlogPosts(): Promise<BlogPost[]> {
   return await client.fetch(`
     *[_type == "post"] | order(publishedAt desc) {
       _id,
@@ -61,12 +18,10 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export default async function BlogPage() {
-  let posts: BlogPost[] = await getBlogPosts();
+  // Use 'const' since we’re not reassigning posts
+  const posts: BlogPost[] = await getBlogPosts();
 
-  posts = posts.sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  // No need to sort here; the Sanity query already handles it
 
   return (
     <div className="max-w-7xl mx-auto mt-24 p-5">

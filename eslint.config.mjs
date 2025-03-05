@@ -10,17 +10,13 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals", "next/typescript", "next"),
   {
-    extends: ['next'],
     rules: {
       "react/no-unescaped-entities": "off",
-      '@next/next/no-page-custom-font': 'off',
-      // Additional custom rule overrides:
+      "@next/next/no-page-custom-font": "off",
       "@typescript-eslint/quotes": "off",
-      quotes: "off",
-      // If you need to override options for quotes, consider:
-      // quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: true }]
+      "quotes": "off",
       "no-useless-escape": "off",
     },
   },
