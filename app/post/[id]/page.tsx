@@ -46,6 +46,6 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await client.fetch(*[_type == "post"]{ _id });
+  const posts = await client.fetch(`*[_type == "post"]{ _id }`);
   return posts.map((post: { _id: string }) => ({ id: post._id }));
 }
