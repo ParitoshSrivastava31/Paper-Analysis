@@ -189,14 +189,8 @@ const useIsMobile = (breakpoint = 768) => {
 };
 
 // --- PinPerspective (3D effect overlay) ---
-// Renamed `title` to `_title` since it is not used.
-const PinPerspective = ({
-  title: _title,
-  href,
-}: {
-  title?: string;
-  href?: string;
-}) => {
+// Removed the unused `title` prop.
+const PinPerspective = ({ href }: { href?: string }) => {
   return (
     <motion.div className="pointer-events-none w-80 h-60 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[6] transition duration-500">
       <div className="w-full h-full -mt-7 inset-0 flex-none">
@@ -328,7 +322,7 @@ export const PinContainer = ({
           <div className={cn("relative z-1", className)}>{children}</div>
         </div>
       </div>
-      <PinPerspective title={title} href={href} />
+      <PinPerspective href={href} />
     </Link>
   );
 };

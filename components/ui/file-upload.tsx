@@ -381,8 +381,6 @@ import { useDropzone } from "react-dropzone";
 import { useUser, useClerk, useSession } from "@clerk/nextjs";
 import axios from "axios";
 import PaymentOptions from "../PaymentOptions";
-// Removed unused supabase client initialization
-// import { createClient } from "@supabase/supabase-js";
 
 // Animation variants
 const mainVariant = {
@@ -644,7 +642,7 @@ export const FileUpload = ({
               <motion.div
                 variants={secondaryVariant}
                 className="absolute opacity-10 border border-green-300 inset-0 z-10 bg-transparent flex items-center justify-center h-32 w-full max-w-[8rem] mx-auto rounded-md"
-              />
+              ></motion.div>
             )}
 
             {files.length > 0 && (
