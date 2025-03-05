@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const LogoTicker: React.FC = () => {
   // Create an array for 10 items.
@@ -7,10 +8,10 @@ const LogoTicker: React.FC = () => {
   return (
     // Add vertical padding to separate this section from others.
     <div className="w-full h-auto py-8 px-8">
-      <h1 className={`text-4xl font-bold text-center`}>
+      <h1 className="text-4xl font-bold text-center">
         Your Exam&apos;s Greatest Hack
       </h1>
-      <p className={`text-center text-gray-600 mt-4 mb-16`}>
+      <p className="text-center text-gray-600 mt-4 mb-16">
         Learning from Its Own History, The Shortcut to Success? There Isn&apos;t
         One—But This Comes Close
       </p>
@@ -34,14 +35,15 @@ const LogoTicker: React.FC = () => {
         >
           {items.map((position) => (
             <div
-              key={position}
+              key={`${position}`}
               className="item absolute inset-0"
               style={{ "--position": position } as React.CSSProperties}
             >
-              <img
+              <Image
                 src={`/images/${position}.webp`}
                 alt={`Image ${position}`}
-                className="w-full h-full object-cover rounded-lg"
+                fill
+                className="object-cover rounded-lg"
               />
             </div>
           ))}
@@ -87,7 +89,7 @@ const LogoTicker: React.FC = () => {
               width: 70px !important;
               height: 105px !important;
               left: calc(50% - 30px) !important;
-              top: 15% !important; /* Adjusted for better spacing on mobile */
+              top: 15% !important;
             }
             .item {
               transform: rotateY(

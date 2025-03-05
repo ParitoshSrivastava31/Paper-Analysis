@@ -69,7 +69,7 @@ const Pricing: React.FC = () => {
 
   const handleSubscriptionClick = async (): Promise<void> => {
     if (!email) return;
-    setLoading(true);
+
     try {
       const response = await axios.post("/api/initiate-subscription", {
         email,
@@ -77,8 +77,6 @@ const Pricing: React.FC = () => {
       window.location.href = response.data.subscriptionUrl;
     } catch (error) {
       console.error("Error initiating subscription:", error);
-    } finally {
-      setLoading(false);
     }
   };
   return (
