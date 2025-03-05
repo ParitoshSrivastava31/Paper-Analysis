@@ -20,18 +20,16 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
   );
 }
 
-// Using the correct App Router page props typing
-type PageProps = {
-  params: { id: string };
+type Props = {
+  // Allow params to be a plain object or a Promise of an object.
+  params: { id: string } | Promise<{ id: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function PostPage({
-  params,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  searchParams,
-}: PageProps) {
-  const { id } = params;
+export default async function PostPage({ params, searchParams }: Props) {
+  // Ensure we have a resolved params object:
+  const resolvedParams = await Promise.resolve(params);
+  const { id } = resolvedParams;
   if (!id) return <div>Post not found</div>;
 
   const post = await getBlogPost(id);
