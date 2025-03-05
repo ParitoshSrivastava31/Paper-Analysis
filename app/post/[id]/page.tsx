@@ -2,6 +2,7 @@ import Image from "next/image";
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
 import { PortableText } from "@portabletext/react";
+import type { Metadata, ResolvingMetadata } from "next";
 
 export const revalidate = 10;
 
@@ -18,10 +19,32 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
   );
 }
 
+// Updated Props: route parameters are plain objects, not Promises
 type Props = {
   params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
+
+// (Optional) Generate dynamic metadata based on the blog post
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { id } = params;
+  const post = await getBlogPost(id);
+  // Extend parent metadata if needed
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: post ? post.title : "Post Not Found",
+    openGraph: {
+      images:
+        post && post.imageUrl
+          ? [post.imageUrl, ...previousImages]
+          : previousImages,
+    },
+  };
+}
 
 export default async function PostPage({ params, searchParams }: Props) {
   const { id } = params;
