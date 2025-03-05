@@ -252,13 +252,13 @@ const PinPerspective = ({ href }: { href?: string }) => {
 // --- PinContainer Component ---
 export const PinContainer = ({
   children,
-  title,
+
   href,
   className,
   containerClassName,
 }: {
   children: React.ReactNode;
-  title?: string;
+
   href?: string;
   className?: string;
   containerClassName?: string;
