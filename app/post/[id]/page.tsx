@@ -1,4 +1,4 @@
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
 import { PortableText } from "@portabletext/react";
@@ -20,7 +20,13 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
   );
 }
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+// Updated type definition - using the correct NextJS Pages Router type
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function PostPage({ params }: Props) {
   const { id } = params;
   if (!id) return <div>Post not found</div>;
 
@@ -34,8 +40,8 @@ export default async function PostPage({ params }: { params: { id: string } }) {
         <Image
           src={post.imageUrl}
           alt={post.title}
-          width={800} // Adjust as needed
-          height={500} // Adjust as needed
+          width={800}
+          height={500}
           className="my-2"
         />
       )}
