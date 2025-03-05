@@ -1,10 +1,10 @@
-import { client } from "@/lib/sanity"; // Adjust path
-import { BlogPost } from "@/types/post"; // Adjust path
+import Image from "next/image"; // Import Next.js Image component
+import { client } from "@/lib/sanity";
+import { BlogPost } from "@/types/post";
 import Link from "next/link";
 
-export const revalidate = 10; // ISR every 10 seconds
+export const revalidate = 10;
 
-// Remove 'export' to make this a local function
 async function getBlogPosts(): Promise<BlogPost[]> {
   return await client.fetch(`
     *[_type == "post"] | order(publishedAt desc) {
@@ -18,10 +18,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export default async function BlogPage() {
-  // Use 'const' since we’re not reassigning posts
   const posts: BlogPost[] = await getBlogPosts();
-
-  // No need to sort here; the Sanity query already handles it
 
   return (
     <div className="max-w-7xl mx-auto mt-24 p-5">
@@ -33,9 +30,11 @@ export default async function BlogPage() {
             className="bg-white rounded-2xl shadow-lg overflow-hidden transition transform hover:scale-105"
           >
             {post.imageUrl && (
-              <img
+              <Image
                 src={post.imageUrl}
                 alt={post.title}
+                width={500} // Adjust as needed
+                height={300} // Adjust as needed
                 className="w-full h-48 object-cover"
               />
             )}
