@@ -35,6 +35,11 @@ export default async function PostPage({ params, searchParams }: Props) {
   const post = await getBlogPost(id);
   if (!post) return <div>Invalid post ID</div>;
 
+  // Log search params to console in development only
+  if (process.env.NODE_ENV === "development") {
+    console.log("Search params:", searchParams);
+  }
+
   return (
     <div className="max-w-3xl mx-auto mt-24 p-5">
       <h1 className="text-4xl mb-8 font-semibold">{post.title}</h1>
