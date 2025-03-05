@@ -23,10 +23,10 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
 type Props = {
   // Allow params to be a plain object or a Promise of an object.
   params: { id: string } | Promise<{ id: string }>;
-  // searchParams: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage({ params, searchParams }: Props) {
   // Ensure we have a resolved params object:
   const resolvedParams = await Promise.resolve(params);
   const { id } = resolvedParams;
