@@ -20,13 +20,13 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
   );
 }
 
-// Updated type definition - using the correct NextJS Pages Router type
-type Props = {
+// Using the correct App Router page props typing
+type PageProps = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage({ params, searchParams }: PageProps) {
   const { id } = params;
   if (!id) return <div>Post not found</div>;
 
