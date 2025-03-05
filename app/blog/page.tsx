@@ -1,4 +1,4 @@
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image";
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
 import Link from "next/link";
@@ -6,15 +6,15 @@ import Link from "next/link";
 export const revalidate = 10;
 
 async function getBlogPosts(): Promise<BlogPost[]> {
-  return await client.fetch(`
-    *[_type == "post"] | order(publishedAt desc) {
+  return await client.fetch(
+    `*[_type == "post"] | order(publishedAt desc) {
       _id,
       title,
       "imageUrl": mainImage.asset->url,
       body,
       publishedAt
-    }
-  `);
+    }`
+  );
 }
 
 export default async function BlogPage() {
@@ -33,8 +33,8 @@ export default async function BlogPage() {
               <Image
                 src={post.imageUrl}
                 alt={post.title}
-                width={500} // Adjust as needed
-                height={300} // Adjust as needed
+                width={500}
+                height={300}
                 className="w-full h-48 object-cover"
               />
             )}
