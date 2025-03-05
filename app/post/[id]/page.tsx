@@ -26,7 +26,11 @@ type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function PostPage({ params, searchParams }: PageProps) {
+export default async function PostPage({
+  params,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  searchParams,
+}: PageProps) {
   const { id } = params;
   if (!id) return <div>Post not found</div>;
 
