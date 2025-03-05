@@ -1,3 +1,4 @@
+import Image from "next/image"; // Import Next.js Image component
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
 import { PortableText } from "@portabletext/react";
@@ -20,9 +21,7 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
 }
 
 export default async function PostPage({ params }: { params: { id: string } }) {
-  // Await params to satisfy Next.js dynamic route validation
   const { id } = await params;
-
   if (!id) return <div>Post not found</div>;
 
   const post = await getBlogPost(id);
@@ -32,10 +31,11 @@ export default async function PostPage({ params }: { params: { id: string } }) {
     <div className="max-w-3xl mx-auto mt-24 p-5">
       <h1 className="text-4xl mb-8 font-semibold">{post.title}</h1>
       {post.imageUrl && (
-        <img
+        <Image
           src={post.imageUrl}
           alt={post.title}
-          width={500}
+          width={800} // Adjust as needed
+          height={500} // Adjust as needed
           className="my-2"
         />
       )}
@@ -46,6 +46,6 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await client.fetch(`*[_type == "post"]{ _id }`);
+  const posts = await client.fetch(*[_type == "post"]{ _id });
   return posts.map((post: { _id: string }) => ({ id: post._id }));
 }
