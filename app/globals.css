@@ -17,5 +17,84 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Sharingan Loader */
+/* Sharingan Loader */
+.sharingon {
+  width: 6em;
+  height: 6em;
+  border: 6px solid black;
+  border-radius: 50%;
+  animation: rot 1s ease-in-out infinite;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* Removed solid background */
+}
+
+.ring {
+  position: absolute;
+  width: 3.5em;
+  height: 3.5em;
+  border: 4px solid rgba(110, 13, 13, 0.5);
+  border-radius: 50%;
+}
+
+.to,
+.circle {
+  position: absolute;
+  width: 0.9em;
+  height: 0.9em;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.to:nth-child(1) {
+  top: -0.5em;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.to::before {
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  right: -0.2em;
+  width: 1.1em;
+  height: 0.9em;
+  box-sizing: border-box;
+  border-left: 16px solid black;
+  border-radius: 100% 0 0;
+}
+
+.to:nth-child(2) {
+  bottom: 0.5em;
+  left: -0.35em;
+  transform: rotate(-120deg);
+}
+
+.to:nth-child(3) {
+  bottom: 0.5em;
+  right: -0.35em;
+  transform: rotate(120deg);
+}
+
+.circle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px 1px;
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
