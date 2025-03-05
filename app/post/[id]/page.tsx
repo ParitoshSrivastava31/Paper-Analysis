@@ -21,7 +21,7 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
 }
 
 export default async function PostPage({ params }: { params: { id: string } }) {
-  const { id } = await params;
+  const { id } = params;
   if (!id) return <div>Post not found</div>;
 
   const post = await getBlogPost(id);
