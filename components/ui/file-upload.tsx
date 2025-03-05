@@ -449,13 +449,17 @@ export const FileUpload = ({
   const handleFileChange = (newFiles: File[]) => {
     const allowedFiles = [...files, ...newFiles].slice(0, maxFiles);
     setFiles(allowedFiles);
-    onChange && onChange(allowedFiles);
+    if (onChange) {
+      onChange(allowedFiles);
+    }
   };
 
   const handleRemoveFile = (indexToRemove: number) => {
     const updatedFiles = files.filter((_, idx) => idx !== indexToRemove);
     setFiles(updatedFiles);
-    onChange && onChange(updatedFiles);
+    if (onChange) {
+      onChange(updatedFiles);
+    }
   };
 
   const handleClick = () => {
