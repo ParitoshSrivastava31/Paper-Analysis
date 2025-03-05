@@ -21,15 +21,13 @@ async function getBlogPost(id: string): Promise<BlogPost | null> {
 
 // Updated Props: route parameters are plain objects, not Promises
 type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 // (Optional) Generate dynamic metadata based on the blog post
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const { id } = params;
   const post = await getBlogPost(id);
   // Extend parent metadata if needed
@@ -46,7 +44,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function PostPage({ params, searchParams }: Props) {
+export default async function PostPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const { id } = params;
   if (!id) return <div>Post not found</div>;
 
