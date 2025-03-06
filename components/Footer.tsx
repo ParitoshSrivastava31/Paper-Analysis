@@ -32,10 +32,10 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <Link
-              href="/licenses"
+              href="/refund"
               className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors"
             >
-              Licenses
+              Refund Policy
             </Link>
             <a
               href="mailto:ai@paperanalysis.com"
