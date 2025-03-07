@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const productId = "pdt_eRtVvVNO8cf8t72lzTkkb";
+    const productId = "pdt_BZv3Cnjf80nYdEyjnWMMq";
     const productWithQuantity = {
       product_id: productId,
       quantity: 1,

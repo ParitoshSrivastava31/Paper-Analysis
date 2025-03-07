@@ -27,7 +27,7 @@ export async function POST(request: Request) {
         name: "", // Optionally, collect and pass the customer's name from the frontend
       },
       payment_link: true,
-      product_id: "pdt_ZUy4tW2ZLjhFIJ38Zsup1",
+      product_id: "pdt_uFknsvzbo2zKEri812Vhf",
       quantity: 1,
       return_url: process.env.NEXT_PUBLIC_ANALYSIS_URL, // Change if needed
     });
