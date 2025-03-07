@@ -39,6 +39,7 @@ export async function POST(request: Request) {
             .update({
               subscription_status: true,
               subscription_end_date: subscription.next_billing_date,
+              payment_status: "success",
             })
             .eq("email", subscription.customer.email);
 
@@ -61,6 +62,19 @@ export async function POST(request: Request) {
           );
           break;
 
+        case "subscription.failed":
+          await supabase
+            .from("users")
+            .update({
+              subscription_status: false,
+              is_paid: false,
+              payment_status: "failed",
+            })
+            .eq("email", payload.data.customer.email);
+
+          console.log("Subscription failed for:", payload.data.customer.email);
+          break;
+
         default:
           break;
       }
@@ -74,12 +88,32 @@ export async function POST(request: Request) {
           // Update analysis as paid in Supabase
           await supabase
             .from("users")
-            .update({ is_paid: true })
+            .update({ is_paid: true, payment_status: "success" })
             .eq("email", paymentDataResp.customer.email);
 
           console.log(
             "Payment updated in Supabase for:",
             paymentDataResp.customer.email
+          );
+          break;
+
+        case "payment.failed":
+          const failedPaymentDataResp = await dodopayments.payments.retrieve(
+            payload.data.payment_id
+          );
+
+          // Update payment as failed in Supabase
+          await supabase
+            .from("users")
+            .update({
+              is_paid: false,
+              payment_status: "failed",
+            })
+            .eq("email", failedPaymentDataResp.customer.email);
+
+          console.log(
+            "Payment failed for:",
+            failedPaymentDataResp.customer.email
           );
           break;
 
