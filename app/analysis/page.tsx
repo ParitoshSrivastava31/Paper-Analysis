@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@clerk/nextjs";
 import { Pie, Bar, Doughnut } from "react-chartjs-2";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -626,34 +626,34 @@ export default function AnalysisPage() {
   const [error, setError] = useState<string | null>(null);
   const { isLoaded, isSignedIn } = useAuth();
   const [loadingText, setLoadingText] = useState("Extracting the data");
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    async function checkPaymentStatus() {
-      const email = localStorage.getItem("user_email");
+  // useEffect(() => {
+  //   async function checkPaymentStatus() {
+  //     const email = localStorage.getItem("user_email");
 
-      if (!email) {
-        console.warn("User email not found in localStorage");
-        router.push("/"); // Redirect if no email is found
-        return;
-      }
+  //     if (!email) {
+  //       console.warn("User email not found in localStorage");
+  //       router.push("/"); // Redirect if no email is found
+  //       return;
+  //     }
 
-      try {
-        const response = await fetch(
-          `/api/check-payment-status?email=${encodeURIComponent(email)}`
-        );
-        const data = await response.json();
+  //     try {
+  //       const response = await fetch(
+  //         `/api/check-payment-status?email=${encodeURIComponent(email)}`
+  //       );
+  //       const data = await response.json();
 
-        if (data.payment_status === "failed") {
-          router.push("/"); // Redirect if payment failed
-        }
-      } catch (error) {
-        console.error("Error checking payment status:", error);
-      }
-    }
+  //       if (data.payment_status === "failed") {
+  //         router.push("/"); // Redirect if payment failed
+  //       }
+  //     } catch (error) {
+  //       console.error("Error checking payment status:", error);
+  //     }
+  //   }
 
-    checkPaymentStatus();
-  }, [router]);
+  //   checkPaymentStatus();
+  // }, [router]);
 
   const fetchAnalysis = useCallback(async () => {
     try {
