@@ -1,8 +1,9 @@
+// lib/usePageView.ts
 "use client";
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { pageview } from "@/lib/gtag"; // ✅ Ensure this function is defined properly
+import { pageview } from "@/lib/gtag";
 
 export function usePageView() {
   const pathname = usePathname();

@@ -44,8 +44,8 @@
 //   );
 // }
 
+// app/layout.tsx
 import type { Metadata } from "next";
-import { usePageView } from "@/lib/usePageView"; // ✅ Import custom hook
 import Script from "next/script";
 import "./globals.css";
 import { Teachers } from "next/font/google";
@@ -56,7 +56,7 @@ import PageViewTracker from "@/components/PageViewTracker";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
-import { GA_TRACKING_ID } from "@/lib/gtag"; // ✅ Import GA ID
+import { GA_TRACKING_ID } from "@/lib/gtag";
 
 export const metadata: Metadata = {
   title: "Paper Analysis - AI-Driven Exam Insights",
@@ -92,8 +92,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  usePageView(); // ✅ Tracks page views on route change
-
   return (
     <ClerkProvider
       appearance={{
@@ -102,7 +100,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <head>
-          {/* ✅ Google Analytics Scripts */}
+          {/* Google Analytics Scripts */}
           {GA_TRACKING_ID && (
             <>
               <Script

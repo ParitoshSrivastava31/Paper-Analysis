@@ -1,9 +1,13 @@
+//components/PageViewTracker.tsx
+
+// components/PageViewTracker.tsx
 "use client";
 
-import { usePageView } from "@/lib/usePageView"; // ✅ Ensure this is the correct path
+import { usePageView } from "@/lib/usePageView";
 
-export default function PageViewTracker() {
-  usePageView(); // ✅ Call the hook without assigning it
+const PageViewTracker = () => {
+  usePageView();
+  return null;
+};
 
-  return null; // ✅ This component doesn't render anything
-}
+export default PageViewTracker;
