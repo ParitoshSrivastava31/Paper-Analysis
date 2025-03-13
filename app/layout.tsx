@@ -52,6 +52,7 @@ import { Teachers } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import PageViewTracker from "@/components/PageViewTracker";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
@@ -128,6 +129,7 @@ export default function RootLayout({
         <body className={teachers.className}>
           <AuroraBackground>
             <Navbar />
+            <PageViewTracker />
             {children}
             <Footer />
           </AuroraBackground>
