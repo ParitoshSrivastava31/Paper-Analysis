@@ -53,6 +53,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import PageViewTracker from "@/components/PageViewTracker";
+import { Analytics } from "@vercel/analytics/react";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
@@ -129,6 +130,7 @@ export default function RootLayout({
             <Navbar />
             <PageViewTracker />
             {children}
+            <Analytics />
             <Footer />
           </AuroraBackground>
         </body>
