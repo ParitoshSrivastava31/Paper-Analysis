@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { pageview } from "@/lib/gtag";
+import { pageview } from "@/lib/gtag"; // ✅ Ensure this function is defined properly
 
-export const usePageView = () => {
+export function usePageView() {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -12,4 +12,4 @@ export const usePageView = () => {
       pageview(pathname);
     }
   }, [pathname]);
-};
+}
