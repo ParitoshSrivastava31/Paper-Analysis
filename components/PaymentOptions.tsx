@@ -68,7 +68,7 @@ export default function PaymentOptions({
               One-Time Analysis
             </h3>
             <p className="text-gray-600">Pay once for this analysis.</p>
-            <p className="text-green-600 font-bold text-2xl mt-2">₹19</p>
+            <p className="text-green-600 font-bold text-2xl mt-2">₹49</p>
           </button>
           <button
             className="border border-gray-300 p-4 rounded-2xl cursor-pointer hover:shadow-lg hover:bg-stone-100 transition w-full"

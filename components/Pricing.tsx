@@ -200,7 +200,7 @@ const Pricing: React.FC = () => {
         <PricingCard
           title="One-Time"
           description="For quick analysis needs"
-          price="19/analysis"
+          price="49/analysis"
           features={[
             "Single analysis per session",
             "View-only access to analysis",
