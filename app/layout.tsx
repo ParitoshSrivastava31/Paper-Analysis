@@ -60,7 +60,7 @@ import { neobrutalism } from "@clerk/themes";
 import { GA_TRACKING_ID } from "@/lib/gtag";
 
 export const metadata: Metadata = {
-  title: "Paper Analysis - AI-Driven Exam Insights",
+  title: "Paper Analysis",
   description:
     "Analyze past exam papers to discover trends, common questions, and key topics with AI insights.",
   openGraph: {

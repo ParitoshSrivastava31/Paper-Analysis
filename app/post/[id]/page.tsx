@@ -1,3 +1,5 @@
+//app/post/%5Bid%5D/page.tsx
+
 import Image from "next/image";
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
@@ -26,7 +28,10 @@ type Props = {
 };
 
 // (Optional) Generate dynamic metadata based on the blog post
-export async function generateMetadata(props: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const params = await props.params;
   const { id } = params;
   const post = await getBlogPost(id);

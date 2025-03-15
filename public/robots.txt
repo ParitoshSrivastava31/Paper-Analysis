@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /api/
+Disallow: /analysis/
+Disallow: /check-subscription/
+Disallow: /clerk-webhook/
+Disallow: /dodo-webhook/
+Disallow: /initiate-one-time/
+Disallow: /initiate-subscription/
+Disallow: /process/
+Disallow: /refund/
+Disallow: /reset-one-time/
+Disallow: /privacy/
+Allow: /blog/
+Allow: /post/
+Allow: /
+Allow: /about
+Allow: /resources
+
+Sitemap: https://www.paperanalysis.com/sitemap.xml

@@ -1,3 +1,5 @@
+//app/blog/page.tsx
+
 import Image from "next/image";
 import { client } from "@/lib/sanity";
 import { BlogPost } from "@/types/post";
