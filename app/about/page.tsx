@@ -95,7 +95,7 @@ const About: NextPage = () => {
         your journey with Paper Analysis and unlock the secrets to efficient,
         AI-powered exam analysis!
       </p>
-      <p className="text-[1.2rem] leading-relaxed mb-4">
+      <p className="text-[1.2rem] leading-relaxed mb-4 z-50">
   Checkout <Link href="https://www.careeroadmap.com" className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200" target="_blank" rel="noopener noreferrer">
     Careeroadmap.com
   </Link>
