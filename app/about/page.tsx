@@ -1,5 +1,6 @@
 "use client";
 import { NextPage } from "next";
+import Link from 'next/link';
 
 const About: NextPage = () => {
   return (
@@ -94,6 +95,11 @@ const About: NextPage = () => {
         your journey with Paper Analysis and unlock the secrets to efficient,
         AI-powered exam analysis!
       </p>
+      <p className="text-[1.2rem] leading-relaxed mb-4">
+  Checkout <Link href="https://www.careeroadmap.com" className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200" target="_blank" rel="noopener noreferrer">
+    Careeroadmap.com
+  </Link>
+</p>
 
       <footer className="mt-8 pt-4 border-t border-gray-300 text-center text-gray-500 opacity-10 text-[0.2rem]">
         <p>
